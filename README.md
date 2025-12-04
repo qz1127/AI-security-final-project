@@ -17,6 +17,9 @@ This project empirically evaluates the **Privacy-Utility Trade-off** in tabular 
 - **High Privacy ($\epsilon \approx 0.17$)**: The model retains ~82% accuracy, demonstrating that we can achieve strong privacy guarantees with only a minor drop in utility.
 - **Defense Effectiveness**: The DP models show near-zero overfitting gaps, effectively neutralizing the risk of membership inference attacks compared to the baseline.
 
+## Source of Dataset
+https://archive.ics.uci.edu/dataset/2/adult
+
 ## How to Run
 
 ### Install Dependencies
