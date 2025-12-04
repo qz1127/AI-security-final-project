@@ -18,6 +18,7 @@ This project empirically evaluates the **Privacy-Utility Trade-off** in tabular 
 - **Defense Effectiveness**: The DP models show near-zero overfitting gaps, effectively neutralizing the risk of membership inference attacks compared to the baseline.
 
 ## Source of Dataset
+**Becker, B. & Kohavi, R. (1996). Adult [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5XW20.**
 https://archive.ics.uci.edu/dataset/2/adult
 
 ## How to Run
