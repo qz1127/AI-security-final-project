@@ -33,7 +33,7 @@ class AdultDataset(Dataset):
     def __getitem__(self, idx):
         return self.X[idx], self.y[idx]
 
-def load_data(data_dir, batch_size=64):
+def load_data(data_dir, batch_size=64, val_split=0.2):
     """
     Loads and preprocesses the Adult dataset.
     Returns train_loader, test_loader, and input_dim.
@@ -74,14 +74,25 @@ def load_data(data_dir, batch_size=64):
     X_train_processed = preprocessor.fit_transform(X_train)
     X_test_processed = preprocessor.transform(X_test)
 
-    # Create Datasets
-    train_dataset = AdultDataset(X_train_processed, y_train)
+    n_train = X_train_processed.shape[0]
+    idx = np.random.permutation(n_train)
+    val_size = int(n_train * val_split)
+    val_idx = idx[:val_size]
+    train_idx = idx[val_size:]
+
+    X_train_final = X_train_processed[train_idx]
+    y_train_final = y_train[train_idx]
+    X_val_final = X_train_processed[val_idx]
+    y_val_final = y_train[val_idx]
+
+    train_dataset = AdultDataset(X_train_final, y_train_final)
+    val_dataset = AdultDataset(X_val_final, y_val_final)
     test_dataset = AdultDataset(X_test_processed, y_test)
 
-    # Create DataLoaders
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
     input_dim = X_train_processed.shape[1]
 
-    return train_loader, test_loader, input_dim
+    return train_loader, val_loader, test_loader, input_dim
