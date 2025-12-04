@@ -1,0 +1,6 @@
+Method,Details,Test Accuracy,Time (s)
+Baseline,No Privacy,0.8484063745019921,1.8535542488098145
+Differential Privacy,Epsilon: 7.09,0.8326029216467463,7.11932897567749
+Differential Privacy,Epsilon: 0.74,0.8303452855245684,7.591691017150879
+Differential Privacy,Epsilon: 0.17,0.8213147410358566,7.1476500034332275
+SMPC (Simulated),Secure Multi-Party Comp.,0.8458167330677291,129.5709891319275
