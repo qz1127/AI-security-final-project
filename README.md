@@ -2,6 +2,9 @@
 
 This project evaluates the trade-off between privacy and utility in machine learning models using Differential Privacy (DP). We train a standard classifier and Differentially Private SGD (DP-SGD) models on the UCI Adult Income dataset to predict income levels (>50K vs <=50K). We analyze the accuracy and the privacy guarantees provided by different noise levels, demonstrating how DP mitigates membership inference attacks.
 
+## Source of Dataset
+https://archive.ics.uci.edu/dataset/2/adult
+
 ## How to Run
 
 ### Install Dependencies
