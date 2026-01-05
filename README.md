@@ -13,9 +13,21 @@ This project empirically evaluates the **Privacy-Utility Trade-off** in tabular 
 2.  **Differentially Private Training**: We retrain the same architecture using **DP-SGD** (via Meta's `Opacus` library) with varying noise levels. This allows us to observe how the "Privacy Budget" ($\epsilon$) affects model performance.
 3.  **Attack Simulation**: We perform a simple **Membership Inference Attack (Gap Attack)** by measuring the difference between Training Accuracy and Test Accuracy. A large gap indicates overfitting and high privacy leakage; a small gap indicates better generalization and privacy.
 
-### Key Results
-- **High Privacy ($\epsilon \approx 0.17$)**: The model retains ~82% accuracy, demonstrating that we can achieve strong privacy guarantees with only a minor drop in utility.
-- **Defense Effectiveness**: The DP models show near-zero overfitting gaps, effectively neutralizing the risk of membership inference attacks compared to the baseline.
+## Experimental Results
+
+### Privacy vs. Utility (Differential Privacy)
+*   **Baseline Accuracy**: ~84.8% (Gap: 0.5%)
+*   **High Privacy ($\epsilon \approx 0.17$)**: ~82.1% Accuracy (Gap: -0.1%)
+*   **Result**: Strong differential privacy guarantees can be achieved with a relatively minor drop in accuracy (~2.7%). The "Gap Attack" showed that DP models successfully eliminated overfitting.
+
+### Privacy vs. Efficiency (SMPC)
+*   **SMPC Accuracy**: ~84.6% (Comparable to Baseline)
+*   **SMPC Time**: ~129.6s (vs. ~1.9s for Baseline)
+*   **Result**: SMPC preserves original model accuracy perfectly but incurs a massive computational overhead (~70x slower in our simulation).
+
+### Optimization Techniques
+*   **Regularization & Distillation**: Achieved ~84.2% - 84.4% accuracy.
+*   **Result**: These methods improved robustness but did not significantly outperform the standard baseline, serving primarily as stabilization techniques.
 
 ## Extended Privacy & Optimization Techniques
 
